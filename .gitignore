@@ -2,3 +2,4 @@
 bin/*
 extern/*
 
+/cmake-build-debug/

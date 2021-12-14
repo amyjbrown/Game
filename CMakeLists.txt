@@ -5,7 +5,7 @@ include(ExternalProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Game src/main.cpp)
+add_executable(Game src/main.cpp src/graphics/Image.cpp src/graphics/Image.h src/graphics/ImageManager.h src/Handle.h)
 
 ExternalProject_Add(
         SDL2_External
