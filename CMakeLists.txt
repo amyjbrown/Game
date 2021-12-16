@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Game src/main.cpp src/graphics/Image.cpp src/graphics/Image.h src/graphics/ImageManager.h src/Handle.h src/graphics/Texture.cpp src/graphics/Texture.h)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+        "${CMAKE_SOURCE_DIR}/bin"
+        )
+
 ExternalProject_Add(
         SDL2
         SOURCE_DIR "${CMAKE_SOURCE_DIR}/extern/SDL2"
@@ -43,4 +47,5 @@ target_link_libraries(
         "${Game_SDL2_lib_path}/SDL2main.lib"
 )
 
-# target_include_directories(Game "${CMAKE_SOURCE_DIR}/extern/SDL2/")
+# copy
+# add_custom_command()

@@ -4,5 +4,6 @@
 
 int main(int argc, char* args[]) {
     std::cout << "Hello, World!" << std::endl;
+    std::cout << "Test to rebuild this" << std::endl;
     return 0;
 }
