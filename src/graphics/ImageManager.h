@@ -18,21 +18,21 @@ namespace graphics
     class ImageManager
     {
         using Key = std::string;
-        using Handle = utility::Handle;
+        using Handle = utility::Handle<Image>;
         using Map = std::unordered_map<Key, Handle>;
 
     public:
         ImageManager() = delete;
         /// @brief Load image from file, and return a Handle to it
-        std::optional<Handle> loadImage(const char* path);
+        auto loadImage(const char* path) -> std::optional<Image&>;
         /// @brief Borrow pointer `handle` represents for usage
-        std::optional<Image&> get_pointer(const Handle& handle);
+        auto get_pointer(const Handle& handle) -> std::optional<Image&>;
         /// @brief Clear the cache and free the Image textures;
         void clear();
 
     private:
         Map cache;
-        std::vector<Image>;
+        std::vector<Image> image_pool;
     };
 }
 
