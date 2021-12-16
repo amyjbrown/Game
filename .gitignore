@@ -1,5 +1,10 @@
-# hello world!
+# files to avoid!
 bin/*
 extern/*
+
+*.exe
+*.pdb
+*.lib
+*.dll
 
 /cmake-build-debug/

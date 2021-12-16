@@ -7,9 +7,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Game src/main.cpp src/graphics/Image.cpp src/graphics/Image.h src/graphics/ImageManager.h src/Handle.h src/graphics/Texture.cpp src/graphics/Texture.h)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
-        "${CMAKE_SOURCE_DIR}/bin"
-        )
+set_target_properties(
+        Game
+        PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin"
+)
 
 ExternalProject_Add(
         SDL2
@@ -40,6 +42,7 @@ elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
     message(INFO "Using 32-bit build.")
     set(Game_SDL2_lib_path "${CMAKE_SOURCE_DIR}/extern/SDL2/lib/x86")
 endif()
+
 target_link_libraries(
         Game
         PRIVATE
@@ -48,4 +51,7 @@ target_link_libraries(
 )
 
 # copy
-# add_custom_command()
+add_custom_command(TARGET Game POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+        "${Game_SDL2_lib_path}/SDL2.dll"          # <--this is in-file
+        "${CMAKE_SOURCE_DIR}/bin")                # <--this is out-file path
