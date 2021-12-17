@@ -5,7 +5,7 @@ include(ExternalProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Game src/main.cpp src/graphics/Image.cpp src/graphics/Image.h src/graphics/ImageManager.h src/Handle.h src/graphics/Texture.cpp src/graphics/Texture.h)
+add_executable(Game src/main.cpp src/graphics/Image.cpp src/graphics/Image.h src/graphics/ImageManager.h src/Handle.h src/graphics/Texture.cpp src/graphics/Texture.h src/graphics/Window.cpp src/graphics/Window.h)
 
 set_target_properties(
         Game

@@ -19,14 +19,19 @@ Image::Image(SDL_Texture& texture) noexcept
           &w,
           &h
           );
-  clip = SDL_Rect {0,0,w,h};
+  clip_ = SDL_Rect {0,0,w,h};
 };
 
 Image::Image(SDL_Texture& texture, SDL_Rect clip) noexcept
     : texture_(&texture),
-      clip() {};
+      clip_() {};
 
 auto Image::texture() const noexcept -> SDL_Texture*
 {
         return texture_;
+}
+
+auto Image::clip() const noexcept -> SDL_Rect
+{
+    return clip_;
 }

@@ -2,8 +2,30 @@
 
 #include <SDL.h>
 
+#include "graphics/Window.h"
+
 int main(int argc, char* args[]) {
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "Test to rebuild this" << std::endl;
+    using namespace graphics;
+
+    SDL_Init(SDL_INIT_EVERYTHING);
+    Window::init(
+            "Test!",
+            360,
+            480
+            );
+    for(;;)
+    {
+        SDL_Event eventum;
+        while (SDL_PollEvent(&eventum))
+        {
+            if (eventum.type == SDL_QUIT) goto quit;
+        };
+        Window::flip();
+    }
+
+    quit:
+
+    Window::shutdown();
+    SDL_Quit();
     return 0;
 }

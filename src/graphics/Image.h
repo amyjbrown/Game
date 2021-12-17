@@ -19,9 +19,13 @@ namespace graphics {
         /// @brief Borrow pointer to texture for operations.
         [[nodiscard]]
         auto texture() const noexcept -> SDL_Texture*;
+        /// @brief Get clipping rect
+        [[nodiscard]]
+        auto clip() const noexcept -> SDL_Rect;
+
     private:
         SDL_Texture* texture_;
-        SDL_Rect clip;
+        SDL_Rect clip_;
     };
 };
 
